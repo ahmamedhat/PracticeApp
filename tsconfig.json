@@ -1,3 +1,12 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+        
+      // this is for src directory
+      "@*": ["./src/*"],
+      "@screens/*": ["./src/screens/*"
+      ]
+    }
+  }
 }
