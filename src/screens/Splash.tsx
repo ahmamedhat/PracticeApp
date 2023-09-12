@@ -1,10 +1,12 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
+import { CustomText } from '@components';
 
 const Splash = () => {
+  
   return (
-    <View className="flex-1 justify-center items-center bg-blue-300">
-      <Text className="text-2xl font-poppins font-black">Splash heey</Text>
+    <View className="flex-1 justify-center items-center bg-black">
+      <CustomText classNames="text-2xl">Splash heey</CustomText>
     </View>
   );
 };
