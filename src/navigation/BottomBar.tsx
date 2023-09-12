@@ -8,6 +8,11 @@ const BottomBarNavigation = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: "black",
+        },
+        tabBarInactiveTintColor: "white",
+        tabBarActiveTintColor: "red",
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />

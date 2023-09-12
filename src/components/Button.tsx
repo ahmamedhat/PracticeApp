@@ -12,11 +12,9 @@ interface IProps {
 const Button = ({ title, onPress, classNames }: IProps) => {
   return (
     <TouchableOpacity
-      className={clsx(
-        "bg-white rounded-2xl items-center justify-center h-[5vh]",
-      )}
+      className={clsx("bg-white rounded-3xl items-center justify-center p-3")}
       onPress={onPress}>
-      <CustomText classNames={clsx("text-2xl text-black", classNames)}>
+      <CustomText classNames={clsx("text-lg text-black", classNames)}>
         {title}
       </CustomText>
     </TouchableOpacity>
