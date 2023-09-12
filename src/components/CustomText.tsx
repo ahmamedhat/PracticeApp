@@ -1,5 +1,6 @@
 import { Text } from "react-native";
 import React, { ReactNode } from "react";
+import clsx from "clsx";
 
 interface IProps {
   children: ReactNode;
@@ -7,9 +8,7 @@ interface IProps {
 }
 
 const CustomText = ({ children, classNames }: IProps) => {
-  return (
-    <Text className={`font-poppins text-white ${classNames}`}>{children}</Text>
-  );
+  return <Text className={clsx("font-poppins", classNames)}>{children}</Text>;
 };
 
 export default CustomText;
