@@ -4,7 +4,7 @@ import { CustomText } from "@components";
 
 const Notifications = () => {
   return (
-    <View className="flex-1 justify-center items-center bg-main">
+    <View className="flex-1 justify-center items-center bg-primaryBackground">
       <CustomText classNames="text-xl">Notifications</CustomText>
     </View>
   );

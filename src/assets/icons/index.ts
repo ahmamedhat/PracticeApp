@@ -1,0 +1,10 @@
+export { default as HomeIcon } from "./home.svg";
+export { default as BellIcon } from "./bell.svg";
+export { default as ProfileIcon } from "./profile.svg";
+export { default as SendIcon } from "./send.svg";
+export { default as ShopIcon } from "./shop.svg";
+export { default as RightArrowIcon } from "./right-arrow.svg";
+export { default as EyeIcon } from "./eye.svg";
+export { default as CrossedEyeIcon } from "./crossed-eye.svg";
+export { default as LockIcon } from "./lock.svg";
+export { default as Logout } from "./logout.svg";

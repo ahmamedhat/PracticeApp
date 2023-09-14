@@ -19,7 +19,7 @@ const Button = ({
   return (
     <TouchableOpacity
       className={clsx(
-        "bg-secondary rounded-3xl items-center justify-center p-3",
+        "bg-primaryButton rounded-3xl items-center justify-center p-3",
         buttonClassNames,
       )}
       onPress={onPress}>

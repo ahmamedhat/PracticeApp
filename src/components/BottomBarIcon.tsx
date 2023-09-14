@@ -1,9 +1,7 @@
 import { View } from "react-native";
 import React from "react";
 import { Colors, IconSizes, RouteNames } from "@utils/constants";
-import HomeIcon from "@icons/home.svg";
-import ProfileIcon from "@icons/profile.svg";
-import NotificaitonsIcon from "@icons/bell.svg";
+import { HomeIcon, ProfileIcon, BellIcon } from "@icons";
 
 interface IProps {
   routeName: string;
@@ -18,15 +16,15 @@ const BottomBarIcon = ({ routeName, isActive }: IProps) => {
           <HomeIcon
             width={IconSizes.BottomBar}
             height={IconSizes.BottomBar}
-            fill={isActive ? Colors.IconActive : Colors.IconInActive}
+            fill={isActive ? Colors.PrimaryIcon : Colors.SecondaryIcon}
           />
         );
       case RouteNames.NOTIFICATIONS:
         return (
-          <NotificaitonsIcon
+          <BellIcon
             width={IconSizes.BottomBar}
             height={IconSizes.BottomBar}
-            fill={isActive ? Colors.IconActive : Colors.IconInActive}
+            fill={isActive ? Colors.PrimaryIcon : Colors.SecondaryIcon}
           />
         );
       case RouteNames.PROFILE:
@@ -34,7 +32,7 @@ const BottomBarIcon = ({ routeName, isActive }: IProps) => {
           <ProfileIcon
             width={IconSizes.BottomBar}
             height={IconSizes.BottomBar}
-            fill={isActive ? Colors.IconActive : Colors.IconInActive}
+            fill={isActive ? Colors.PrimaryIcon : Colors.SecondaryIcon}
           />
         );
       default:

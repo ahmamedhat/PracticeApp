@@ -12,7 +12,7 @@ module.exports = {
 					"@navigation": "./src/navigation/index",
 					"@redux": "./src/redux",
 					"@utils": "./src/utils",
-					"@icons": "./src/assets/icons",
+					"@icons": "./src/assets/icons/index",
 				},
 			},
 		], "react-native-reanimated/plugin"],

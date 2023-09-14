@@ -8,13 +8,27 @@ export const RouteNames = {
 
 export enum IconSizes {
   BottomBar = 30,
+  Button = 20,
 }
 
 export const Colors = {
-  Main: "#0A0E21",
-  Secondary: "#3498DB",
-  IconActive: "#3498DB",
-  IconInActive: "white",
+  PrimaryBackground: "#121212",
+  SecondaryBackground: "",
+  AccentBackground: "",
+
+  PrimaryButton: "#2D2D2D",
+  SuccessButton: "",
+  DangerButton: "",
+  DisabledButton: "",
+
+  PrimaryText: "white",
+  SecondaryText: "#A9A9A9",
+  AccentText: "",
+
+  PrimaryIcon: "#2D2D2D",
+  SecondaryIcon: "white",
+
+  ButtonIcon: "white",
 };
 
 export enum DeviceScreen {

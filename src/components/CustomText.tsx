@@ -5,11 +5,14 @@ import clsx from "clsx";
 interface IProps {
   children: ReactNode;
   classNames?: string;
+  onPress?: () => void;
 }
 
-const CustomText = ({ children, classNames }: IProps) => {
+const CustomText = ({ children, classNames, onPress }: IProps) => {
   return (
-    <Text className={clsx("font-poppins text-white", classNames)}>
+    <Text
+      onPress={onPress}
+      className={clsx("font-poppins text-white", classNames)}>
       {children}
     </Text>
   );
