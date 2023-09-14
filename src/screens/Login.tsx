@@ -11,7 +11,6 @@ const LoginScreen = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
   const onLogin = () => {
     setLoading(true);
     setTimeout(() => {
