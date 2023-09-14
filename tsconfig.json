@@ -8,6 +8,8 @@
       "@screens/*": ["./src/screens/*"],
       "@navigation/*": ["./src/navigation/*"],
       "@redux/*": ["./src/redux/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@icons/*": ["./src/assets/icons/*"],
     }
   }
 }

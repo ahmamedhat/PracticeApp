@@ -10,7 +10,10 @@ module.exports = {
 				"@components": "./src/components/index",
 				"@navigation": "./src/navigation/index",
 				"@redux": "./src/redux",
+				"@utils": "./src/utils",
+				"@icons": "./src/assets/icons",
 			},
 		},
 	]],
 };
+
