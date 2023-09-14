@@ -14,7 +14,7 @@ export const Colors = {
   Main: "#0A0E21",
   Secondary: "#3498DB",
   IconActive: "#3498DB",
-  IconInActive: "#CCCCCC",
+  IconInActive: "white",
 };
 
 export enum DeviceScreen {

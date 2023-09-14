@@ -2,11 +2,27 @@ import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import { BottomBarIcon } from "@components";
 import { DeviceScreen } from "@utils/constants";
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
 
 function BottomBar({ state, descriptors, navigation }: any) {
   const routesCount = state.routes.length;
   const Width = DeviceScreen.Width - 20;
   const IndicatorWidth = Width / routesCount;
+
+  const translateAnimation = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: withTiming(IndicatorWidth * state.index, {
+            duration: 200,
+          }),
+        },
+      ],
+    };
+  });
 
   return (
     <View
@@ -14,11 +30,11 @@ function BottomBar({ state, descriptors, navigation }: any) {
         "flex flex-row self-center absolute bottom-6 bg-secondary h-[8vh] items-center justify-around rounded-full overflow-hidden"
       }
       style={{ width: Width }}>
-      <View
+      <Animated.View
         className="absolute left-0 right-0 bottom-0 top-0 items-center justify-center rounded-full"
-        style={{ width: IndicatorWidth, left: IndicatorWidth * state.index }}>
+        style={[{ width: IndicatorWidth }, translateAnimation]}>
         <View className={"rounded-full bg-white w-[60px] h-[60px] -z-10"} />
-      </View>
+      </Animated.View>
       {state.routes.map((route: any, index: any) => {
         const { options } = descriptors[route.key];
 
