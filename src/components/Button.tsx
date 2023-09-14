@@ -6,15 +6,24 @@ import clsx from "clsx";
 interface IProps {
   title: string;
   onPress: () => void;
-  classNames: string;
+  buttonClassNames?: string;
+  textClassNames?: string;
 }
 
-const Button = ({ title, onPress, classNames }: IProps) => {
+const Button = ({
+  title,
+  onPress,
+  buttonClassNames,
+  textClassNames,
+}: IProps) => {
   return (
     <TouchableOpacity
-      className={clsx("bg-white rounded-3xl items-center justify-center p-3")}
+      className={clsx(
+        "bg-secondary rounded-3xl items-center justify-center p-3",
+        buttonClassNames,
+      )}
       onPress={onPress}>
-      <CustomText classNames={clsx("text-lg text-black", classNames)}>
+      <CustomText classNames={clsx("text-lg text-white", textClassNames)}>
         {title}
       </CustomText>
     </TouchableOpacity>

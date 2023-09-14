@@ -1,19 +1,17 @@
 import { View } from "react-native";
 import React from "react";
-import { Button, CustomText } from "@components";
+import { Button } from "@components";
 import { useAppDispatch } from "@redux/hooks";
 import { deleteUser } from "@redux/userSlice";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
   return (
-    <View className="flex-1 justify-center items-center">
-      <CustomText classNames="text-2xl font-bold text-black">
-        Profile
-      </CustomText>
+    <View className="flex-1 justify-center items-center bg-main">
       <Button
         title="Logout"
-        classNames="text-2xl font-bold"
+        buttonClassNames="bg-secondary px-6"
+        textClassNames="text-sm font-semibold"
         onPress={() => dispatch(deleteUser())}
       />
     </View>
