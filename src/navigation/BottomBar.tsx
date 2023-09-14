@@ -1,20 +1,19 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeScreen, ProfileScreen } from "@screens";
+import { HomeScreen, NotificationsScreen, ProfileScreen } from "@screens";
+import { BottomBar } from "@components";
 
 const BottomBarNavigation = () => {
   const Tab = createBottomTabNavigator();
+
   return (
     <Tab.Navigator
+      tabBar={props => <BottomBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: "black",
-        },
-        tabBarInactiveTintColor: "white",
-        tabBarActiveTintColor: "red",
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Notifications" component={NotificationsScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
