@@ -38,8 +38,9 @@ const ButtonWithLoading = ({
 
   return (
     <TouchableOpacity
+      disabled={isLoading}
       className={clsx(
-        "bg-primaryButton flex flex-row rounded-3xl items-center justify-center h-[7vh]",
+        "bg-primaryButton flex flex-row rounded-3xl items-center justify-center h-[7vh] shadow-sm shadow-primaryButton",
         buttonClassNames,
       )}
       onPress={onPress}>

@@ -5,3 +5,4 @@ export { default as BottomBarIcon } from "./BottomBarIcon";
 export { default as ButtonWithLoading } from "./ButtonWithLoading";
 export { default as CustomTextInput } from "./CustomTextInput";
 export { default as Loading } from "./Loading";
+export { default as Modal } from "./Modal";

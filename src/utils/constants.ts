@@ -13,7 +13,7 @@ export enum IconSizes {
 
 export const Colors = {
   PrimaryBackground: "#121212",
-  SecondaryBackground: "",
+  SecondaryBackground: "#2D2D2D",
   AccentBackground: "",
 
   PrimaryButton: "#2D2D2D",
@@ -29,6 +29,8 @@ export const Colors = {
   SecondaryIcon: "white",
 
   ButtonIcon: "white",
+
+  Danger: "#bb2124",
 };
 
 export enum DeviceScreen {

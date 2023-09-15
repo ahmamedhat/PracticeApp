@@ -27,7 +27,7 @@ function BottomBar({ state, descriptors, navigation }: any) {
   return (
     <View
       className={
-        "flex flex-row self-center absolute bottom-6 bg-primaryButton h-[8vh] items-center justify-around rounded-full overflow-hidden"
+        "flex flex-row self-center absolute bottom-6 bg-secondaryBackground h-[8vh] items-center justify-around rounded-full overflow-hidden"
       }
       style={{ width: Width }}>
       <Animated.View

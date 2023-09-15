@@ -1,12 +1,13 @@
 import { View, TextInput } from "react-native";
 import React, { ReactNode } from "react";
-import { Colors } from "@utils/constants";
+import { Colors, IconSizes } from "@utils/constants";
 
 interface IProps {
   children: ReactNode;
   secureTextEntry?: boolean;
   capitalize?: boolean;
   onTextChange: (val: string) => void;
+  onBlur: (e: any) => void;
   value: string;
   placeholder: string;
 }
@@ -16,22 +17,28 @@ const CustomTextInput = ({
   secureTextEntry,
   capitalize,
   onTextChange,
+  onBlur,
   value,
   placeholder,
 }: IProps) => {
   return (
-    <View className="">
-      <View className="absolute z-10 left-6 bottom-[55%]">{children}</View>
+    <View className="mb-6">
+      <View
+        className="absolute z-10 left-6 top-1/2"
+        style={{ transform: [{ translateY: -IconSizes.Button / 2 }] }}>
+        {children}
+      </View>
       <TextInput
         selectionColor={Colors.PrimaryButton}
         secureTextEntry={secureTextEntry}
         autoCapitalize={capitalize ? "none" : "sentences"}
         onChangeText={onTextChange}
+        onBlur={onBlur}
         autoCorrect={false}
         value={value}
         placeholder={placeholder}
         placeholderTextColor={Colors.SecondaryText}
-        className="h-[7vh] bg-white rounded-full pb-1 pl-16 w-full mb-6 font-poppins"
+        className="h-[7vh] bg-white rounded-full pl-16 w-full font-poppins"
         style={{
           color: Colors.PrimaryButton,
         }}
