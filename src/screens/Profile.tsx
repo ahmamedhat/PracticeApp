@@ -21,7 +21,7 @@ const Profile = () => {
     <View className="flex-1 justify-center p-4 bg-primaryBackground">
       <ButtonWithLoading
         title="LOGOUT"
-        buttonClassNames="bg-primaryButton"
+        buttonClassNames=""
         onPress={onLogout}
         isLoading={loading}>
         <Logout

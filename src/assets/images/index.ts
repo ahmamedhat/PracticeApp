@@ -1,1 +1,1 @@
-export { default as Login } from "./login.svg";
+export { default as Logo } from "./logo.svg";

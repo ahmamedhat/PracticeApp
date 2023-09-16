@@ -12,7 +12,7 @@ import { LockIcon, ProfileIcon, RightArrowIcon } from "@icons";
 import { Colors, DeviceScreen, IconSizes } from "@utils/constants";
 import { InferType, object, string } from "yup";
 import { Formik, FormikErrors } from "formik";
-import { Login } from "@images";
+import { Logo } from "@images";
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
@@ -57,15 +57,15 @@ const LoginScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-secondaryBackground">
-      <View className="absolute top-0 left-0 right-0 bottom-0">
-        <Login width={DeviceScreen.Width} height={DeviceScreen.Height / 2} />
+    <View className="flex-1 bg-accentBackground">
+      <View className="absolute self-center">
+        <Logo
+          width={DeviceScreen.Width / 2.4}
+          height={DeviceScreen.Height / 2.4}
+          fill={Colors.PrimaryText}
+        />
       </View>
-      <View className="mt-[34vh] flex-1 bg-primaryBackground p-4 rounded-t-[50px] pt-[8vh]">
-        <CustomText classNames="text-4xl self-center text-white tracking-[6px] mb-10 font-semibold">
-          LOGIN
-        </CustomText>
-
+      <View className="mt-[34vh] flex-1 bg-primaryBackground p-4 rounded-t-[50px] pt-[6vh]">
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={values => onLogin(values)}

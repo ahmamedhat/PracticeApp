@@ -27,13 +27,13 @@ function BottomBar({ state, descriptors, navigation }: any) {
   return (
     <View
       className={
-        "flex flex-row self-center absolute bottom-6 bg-secondaryBackground h-[8vh] items-center justify-around rounded-full overflow-hidden"
+        "flex flex-row self-center absolute bottom-6 bg-[#50577A] h-[8vh] items-center justify-around rounded-full overflow-hidden"
       }
       style={{ width: Width }}>
       <Animated.View
         className="absolute left-0 right-0 bottom-0 top-0 items-center justify-center rounded-full"
         style={[{ width: IndicatorWidth }, translateAnimation]}>
-        <View className={"rounded-full bg-white w-[60px] h-[60px] -z-10"} />
+        <View className={"rounded-full bg-white w-[54px] h-[54px] -z-10"} />
       </Animated.View>
       {state.routes.map((route: any, index: any) => {
         const { options } = descriptors[route.key];

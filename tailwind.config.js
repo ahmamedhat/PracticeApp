@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         primaryBackground: "#121212",
         secondaryBackground: "#2D2D2D",
-        accentBackground: "",
+        accentBackground: "#50577A",
         primaryButton: "#2D2D2D",
         successButton: "",
         dangerButton: "",

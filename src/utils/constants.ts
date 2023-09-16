@@ -14,7 +14,7 @@ export enum IconSizes {
 export const Colors = {
   PrimaryBackground: "#121212",
   SecondaryBackground: "#2D2D2D",
-  AccentBackground: "",
+  AccentBackground: "#50577A",
 
   PrimaryButton: "#2D2D2D",
   SuccessButton: "",
