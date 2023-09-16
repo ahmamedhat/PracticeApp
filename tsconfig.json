@@ -10,6 +10,7 @@
       "@redux/*": ["./src/redux/*"],
       "@utils/*": ["./src/utils/*"],
       "@icons": ["./src/assets/icons"],
+      "@images": ["./src/assets/images"],
       "@env": ["./.env"],
     },
     // "typeRoots": ["./declarations.d.ts"]
