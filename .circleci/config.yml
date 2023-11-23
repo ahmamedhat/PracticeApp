@@ -1,153 +1,61 @@
-description: Builds the iOS app at the given path with the given build scheme
-executor:
-  name: macos
-  resource_class: <<parameters.resource_class>>
-  xcode_version: <<parameters.xcode_version>>
-parameters:
-  attach_workspace:
-    default: true
-    description: >-
-      Boolean for whether or not to attach to an existing workspace. Default is
-      true.
-    type: boolean
-  build_configuration:
-    default: Debug
-    description: >-
-      The build configuration to use. This is normally either "Debug" or
-      "Release" but you may have custom build configuration configured for your
-      app.
-    type: string
-  checkout:
-    default: false
-    description: Boolean for whether or not to checkout as a first step. Default is false.
-    type: boolean
-  derived_data_path:
-    default: ios/build
-    description: >-
-      The path to the directory to place the derived data, relative to the root
-      of the repository.
-    type: string
-  device:
-    default: iPhone 11
-    description: The type of device you want to build for.
-    type: string
-  homebrew_cache:
-    default: true
-    description: Should we cache after brew install? Defaults to true
-    type: boolean
-  homebrew_update:
-    default: true
-    description: Should we run brew update? Defaults to true
-    type: boolean
-  node_version:
-    default: "16"
-    description: >-
-      The version of Node to use. This can be either a major version ("8"), a
-      major and minor ("8.4"), or a fully qualified version ("8.4.1").
-    type: string
-  on_after_initialize:
-    default: ""
-    description: A custom command to run right after yarn install.
-    type: string
-  pod_cache:
-    default: true
-    description: Save and restore the CocoaPods cache? Defaults to true
-    type: boolean
-  pod_install_directory:
-    default: ""
-    description: >-
-      The location of the "ios" directory for `pod install`. Will skip `pod
-      install` if missing.
-    type: string
-  project_path:
-    description: >-
-      The path to the Xcode project (*.xcodeproj) or the Xcode workspace
-      (*.xcworkspace) that you want to build, relative to the root of the
-      repository.
-    type: string
-  project_type:
-    default: project
-    description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
-    enum:
-      - project
-      - workspace
-    type: enum
-  resource_class:
-    default: medium
-    description: >-
-      Changes the resource class of the executor. Requires a support request to
-      enable the resource_class parameter. See
-      https://circleci.com/docs/2.0/configuration-reference/#resource_class
-    type: string
-  scheme:
-    description: The scheme to use.
-    type: string
-  start_metro:
-    default: false
-    description: If we should start the Metro packager in the background for this job.
-    type: boolean
-  workspace_root:
-    default: .
-    description: >-
-      Workspace root path that is either an absolute path or a path relative to
-      the working directory. Defaults to '.' (the working directory).
-    type: string
-  xcode_version:
-    default: 12.5.1
-    description: >-
-      The version of Xcode to use. See here for the list of supported versions
-      https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions
-    type: string
-  xcodebuild_cache:
-    default: true
-    description: Should we cache after Xcode build? Defaults to true
-    type: boolean
-  yarn_cache:
-    default: true
-    description: Should we cache after yarn install? Defaults to true
-    type: boolean
-  yarn_cache_folder:
-    default: /tmp/yarn
-    description: The path to the yarn cache folder
-    type: string
-steps:
-  - when:
-      condition: <<parameters.checkout>>
-      steps:
-        - checkout
-  - when:
-      condition: <<parameters.attach_workspace>>
-      steps:
-        - attach_workspace:
-            at: <<parameters.workspace_root>>
-  - setup_macos_executor:
-      homebrew_cache: <<parameters.homebrew_cache>>
-      homebrew_update: <<parameters.homebrew_update>>
-      node_version: <<parameters.node_version>>
-  - yarn_install:
-      cache: <<parameters.yarn_cache>>
-      cache_folder: <<parameters.yarn_cache_folder>>
-  - when:
-      condition: <<parameters.on_after_initialize>>
-      steps:
-        - run:
-            command: <<parameters.on_after_initialize>>
-            name: on_after_initialize
-  - when:
-      condition: <<parameters.start_metro>>
-      steps:
-        - metro_start
-  - when:
-      condition: <<parameters.pod_install_directory>>
-      steps:
-        - pod_install:
-            cache: <<parameters.pod_cache>>
-            pod_install_directory: <<parameters.pod_install_directory>>
-  - ios_build:
-      build_configuration: <<parameters.build_configuration>>
-      cache: <<parameters.xcodebuild_cache>>
-      derived_data_path: <<parameters.derived_data_path>>
-      device: <<parameters.device>>
-      project_path: <<parameters.project_path>>
-      project_type: <<parameters.project_type>>
-      scheme: <<parameters.scheme>>
+jobs:
+  analyse_js:
+    executor: rn/linux_js
+    steps:
+      - attach_workspace:
+          at: .
+      - rn/yarn_install
+      - run:
+          command: yarn eslint
+          name: Run ESLint
+      - run:
+          command: yarn flow
+          name: Flow
+      - run:
+          command: yarn jest
+          name: Jest
+  checkout_code:
+    executor: rn/linux_js
+    steps:
+      - checkout
+      - persist_to_workspace:
+          paths: .
+          root: .
+  fastlane_release:
+    executor: rn/linux_js
+    steps:
+      - attach_workspace:
+          at: .
+      - rn/yarn_install
+      - run:
+          command: bundle exec fastlane ios release
+          name: Run Fastlane
+orbs:
+  rn: react-native-community/react-native@1.0.0
+version: 2.1
+workflows:
+  test:
+    jobs:
+      - checkout_code
+      - analyse_js:
+          requires:
+            - checkout_code
+      - rn/ios_build:
+          build_configuration: Release
+          device: iPhone 11
+          name: build_ios_release
+          project_path: ios/Example.xcodeproj
+          requires:
+            - analyse_js
+          scheme: Example
+      - rn/ios_build_and_test:
+          build_configuration: Release
+          detox_configuration: ios.sim.release
+          device: iPhone 11
+          project_path: ios/Example.xcodeproj
+          requires:
+            - analyse_js
+          scheme: Example
+      - fastlane_release:
+          requires:
+            - rn/ios_build_and_test
