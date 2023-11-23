@@ -1,19 +1,15 @@
-import { Text } from "react-native";
+import { Text, TextProps } from "react-native";
 import React, { ReactNode } from "react";
 import clsx from "clsx";
 
-interface IProps {
+interface CustomTextProps extends TextProps {
   children: ReactNode;
-  classNames?: string;
-  onPress?: () => void;
 }
 
-const CustomText = ({ children, classNames, onPress }: IProps) => {
+const CustomText = (props: CustomTextProps) => {
   return (
-    <Text
-      onPress={onPress}
-      className={clsx("font-poppins text-white", classNames)}>
-      {children}
+    <Text {...props} className={clsx("font-poppins text-white")}>
+      {props.children}
     </Text>
   );
 };

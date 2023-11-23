@@ -9,10 +9,10 @@ const Home = () => {
   return (
     <View className="flex-1 justify-center items-center bg-primaryBackground">
       <View className="flex-col w-screen h-[10vh] p-2 justify-center items-center">
-        <CustomText classNames="text-xl font-bold">
+        <CustomText className="text-xl font-bold">
           Good Morning {user?.name} 👋🏻
         </CustomText>
-        <CustomText classNames="text-md font-semibold">Online</CustomText>
+        <CustomText className="text-md font-semibold">Online</CustomText>
       </View>
     </View>
   );

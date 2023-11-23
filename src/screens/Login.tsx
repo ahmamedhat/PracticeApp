@@ -117,7 +117,7 @@ const LoginScreen = () => {
 
         <View className="flex flex-row m-auto">
           <CustomText>Don&apos;t have an account yet?</CustomText>
-          <CustomText classNames="ml-1 underline" onPress={() => null}>
+          <CustomText className="ml-1 underline" onPress={() => null}>
             Signup
           </CustomText>
         </View>

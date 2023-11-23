@@ -28,7 +28,7 @@ const Modal = ({
         onBackdropPress={onCloseModal}
         className="">
         <View className="flex flex-col bg-primaryBackground rounded-xl h-[28vh] justify-center items-center overflow-hidden px-6">
-          <CustomText classNames="font-bold text-lg self-center text-center mb-8">
+          <CustomText className="font-bold text-lg self-center text-center mb-8">
             {text}
           </CustomText>
           <View className="flex flex-row absolute bottom-0 right-0 left-0">

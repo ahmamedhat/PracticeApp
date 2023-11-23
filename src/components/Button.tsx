@@ -23,7 +23,7 @@ const Button = ({
         buttonClassNames,
       )}
       onPress={onPress}>
-      <CustomText classNames={clsx("text-lg text-white", textClassNames)}>
+      <CustomText className={clsx("text-lg text-white", textClassNames)}>
         {title}
       </CustomText>
     </TouchableOpacity>
