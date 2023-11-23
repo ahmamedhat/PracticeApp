@@ -3,9 +3,7 @@
  */
 
 import "react-native";
-import React from "react";
-import App from "../App";
-import { expect, jest, test } from "@jest/globals";
+import { expect } from "@jest/globals";
 
 // Note: import explicitly to use the types shiped with jest.
 import { it } from "@jest/globals";
