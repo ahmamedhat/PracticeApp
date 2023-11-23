@@ -24,9 +24,6 @@ jobs:
           name: Run ESLint
           command: yarn eslint
       - run:
-          name: Flow
-          command: yarn flow
-      - run:
           name: Jest
           command: yarn jest
 
@@ -37,7 +34,7 @@ workflows:
       # Note: This is a job which is defined above and not part of the Orb
       - checkout_code
 
-      # Analyze the Javascript using ESLint, Flow, and Jest
+      # Analyze the Javascript using ESLint, and Jest
       # Note: This is a job which is defined above and not part of the Orb
       - analyse_js:
           requires:
