@@ -26,10 +26,6 @@ jobs:
       - run:
           name: Jest
           command: yarn jest
-      - restore_cache:
-          keys:
-            - v3-deps-{{ checksum "package-lock.json" }}-{{ checksum "combined-package-lock.txt" }}
-            - v3-deps
 
 workflows:
   test:
@@ -38,7 +34,7 @@ workflows:
       # Note: This is a job which is defined above and not part of the Orb
       - checkout_code
 
-      # Analyze the Javascript using ESLint, and Jest
+      # Analyze the Javascript using ESLint, Flow, and Jest
       # Note: This is a job which is defined above and not part of the Orb
       - analyse_js:
           requires:
