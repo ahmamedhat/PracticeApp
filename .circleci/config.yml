@@ -7,6 +7,9 @@ orbs:
 
 # Custom jobs which are not part of the Orb
 jobs:
+  macos:
+    xcode: "14.2.0"
+  resource_class: macos.m1.large.gen1
   checkout_code:
     executor: rn/linux_js
     steps:
@@ -66,7 +69,6 @@ workflows:
           name: build_ios_release
           project_path: ios/Example.xcodeproj
           device: "iPhone 11"
-          xcode_version: "12.1"
           build_configuration: Release
           scheme: Example
           requires:
@@ -76,7 +78,6 @@ workflows:
       - rn/ios_build_and_test:
           project_path: "ios/Example.xcodeproj"
           device: "iPhone 11"
-          xcode_version: "12.1"
           build_configuration: "Release"
           scheme: "Example"
           detox_configuration: "ios.sim.release"
