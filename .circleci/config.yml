@@ -9,7 +9,6 @@ orbs:
 jobs:
   checkout_code:
     executor: rn/linux_js
-    node_version: "18"
     steps:
       - checkout
       - persist_to_workspace:
@@ -67,6 +66,7 @@ workflows:
           name: build_ios_release
           project_path: ios/Example.xcodeproj
           device: "iPhone 11"
+          xcode_version: "12.1"
           build_configuration: Release
           scheme: Example
           requires:
@@ -76,6 +76,7 @@ workflows:
       - rn/ios_build_and_test:
           project_path: "ios/Example.xcodeproj"
           device: "iPhone 11"
+          xcode_version: "12.1"
           build_configuration: "Release"
           scheme: "Example"
           detox_configuration: "ios.sim.release"
