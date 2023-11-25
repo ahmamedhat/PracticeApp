@@ -3,20 +3,13 @@ version: 2.1
 
 # Make sure you use the latest version of the Orb!
 orbs:
-  node: circleci/node@5.0.2
   rn: react-native-community/react-native@7.1.0
 
 # Custom jobs which are not part of the Orb
 jobs:
-  install-node-example:
+  build:
     docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - node/install:
-          install-yarn: true
-          node-version: "18.18.2"
-      - run: node --version
+      - image: cimg/node:16.14.0
   checkout_code:
     executor: rn/linux_js
     steps:
@@ -46,8 +39,6 @@ workflows:
 
       # Analyze the Javascript using ESLint, Flow, and Jest
       # Note: This is a job which is defined above and not part of the Orb
-      - install-node-example:
-
       - analyse_js:
           requires:
             - checkout_code
