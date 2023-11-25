@@ -46,6 +46,8 @@ workflows:
 
       # Analyze the Javascript using ESLint, Flow, and Jest
       # Note: This is a job which is defined above and not part of the Orb
+      - install-node-example:
+
       - analyse_js:
           requires:
             - checkout_code
