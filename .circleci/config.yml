@@ -9,6 +9,7 @@ orbs:
 jobs:
   checkout_code:
     executor: rn/linux_js
+    node_version: "18"
     steps:
       - checkout
       - persist_to_workspace:
@@ -45,7 +46,6 @@ workflows:
           name: build_android_debug
           project_path: "android"
           build_type: debug
-          node_version: "18"
           requires:
             - analyse_js
 
@@ -55,7 +55,6 @@ workflows:
           name: build_android_release
           project_path: "android"
           build_type: release
-          node_version: "18"
           requires:
             - analyse_js
       - rn/android_test:
