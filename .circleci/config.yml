@@ -7,9 +7,6 @@ orbs:
 
 # Custom jobs which are not part of the Orb
 jobs:
-  build:
-    docker:
-      - image: cimg/node:16.14.0
   checkout_code:
     executor: rn/linux_js
     steps:
